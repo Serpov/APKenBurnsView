@@ -51,7 +51,7 @@ class DefaultAnimationDataSource: AnimationDataSource {
 
     // MARK: - Private
 
-    private func translateToImageCoordinates(point point: CGPoint, imageSize: CGSize, viewPortSize: CGSize) -> CGPoint {
+    private func translateToImageCoordinates(point: CGPoint, imageSize: CGSize, viewPortSize: CGSize) -> CGPoint {
         let x = imageSize.width / 2 - viewPortSize.width / 2 - point.x
         let y = imageSize.height / 2 - viewPortSize.height / 2 - point.y
         let position = CGPoint(x: x, y: y)

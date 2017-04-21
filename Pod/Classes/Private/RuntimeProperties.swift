@@ -17,15 +17,11 @@ private func box<T>(x: T) -> Box<T> {
     return Box(x)
 }
 
-func setAssociatedObject<T>(object: AnyObject, value: T, associativeKey: UnsafePointer<Void>, policy: objc_AssociationPolicy) {
-    if let v: AnyObject = value as? AnyObject {
-        objc_setAssociatedObject(object, associativeKey, v, policy)
-    } else {
-        objc_setAssociatedObject(object, associativeKey, box(x: value), policy)
-    }
+func setAssociatedObject<T>(object: AnyObject, value: T, associativeKey: UnsafeRawPointer, policy: objc_AssociationPolicy) {
+    objc_setAssociatedObject(object, associativeKey, value, policy)
 }
 
-func getAssociatedObject<T>(object: AnyObject, associativeKey: UnsafePointer<Void>) -> T? {
+func getAssociatedObject<T>(object: AnyObject, associativeKey: UnsafeRawPointer) -> T? {
     if let v = objc_getAssociatedObject(object, associativeKey) as? T {
         return v
     } else if let v = objc_getAssociatedObject(object, associativeKey) as? Box<T> {
