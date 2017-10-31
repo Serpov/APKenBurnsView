@@ -239,11 +239,13 @@ public class APKenBurnsView: UIView {
         guard isValidAnimationDurations() else {
             fatalError("Animation durations setup is invalid!")
         }
-
+        
+        let bounds = self.bounds.size
+        
         DispatchQueue.global().async {
             self.stopWatch.start()
 
-            var animation = self.animationDataSource.buildAnimation(forImage: image, forViewPortSize: self.bounds.size)
+            var animation = self.animationDataSource.buildAnimation(forImage: image, forViewPortSize: bounds)
 
             DispatchQueue.main.async {
 
