@@ -181,11 +181,11 @@ public class APKenBurnsView: UIView {
         guard superview == nil else {
             notificationCenter.addObserver(self,
                                            selector: #selector(applicationWillResignActive),
-                                           name: .UIApplicationWillResignActive,
+                                           name: UIApplication.willResignActiveNotification,
                                            object: nil)
             notificationCenter.addObserver(self,
                                            selector: #selector(applicationDidBecomeActive),
-                                           name: .UIApplicationDidBecomeActive,
+                                           name: UIApplication.didBecomeActiveNotification,
                                            object: nil)
             return
         }
